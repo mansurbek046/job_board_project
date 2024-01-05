@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+    {{ job.jobTitle }}
+{% endblock %}
+
+{% block content %}
+    <h1>Job details</h1>
+    <h2>{{ job.jobTitle }}</h2>
+    {{ job.jobDescription }}
+    <br>
+    {% if user.is_authenticated and job.posted_by == request.user %}
+    <a href="{% url 'job-update' job.pk %}">
+        Edit
+    </a>
+    <a href="{% url 'job-delete' job.pk %}">
+        Delete
+    </a>
+    {% endif %}
+{% endblock %}

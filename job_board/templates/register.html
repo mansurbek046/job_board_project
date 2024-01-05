@@ -1,0 +1,13 @@
+<h1>Register</h1>
+<form method="POST">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit"> Register </button>
+</form>
+{% comment %} {% if form.errors %}
+<ul>
+    {% for field,error in form.errors.item %}
+        <li>{{field}} : {{error}}</li>
+    {% endfor %}
+</ul>
+{% endif %} {% endcomment %}

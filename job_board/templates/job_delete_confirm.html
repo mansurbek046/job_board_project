@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Delete confirm
+{% endblock %}
+
+{% block content %}
+    <h1>Confirmation</h1>
+    <p>Are you sure you want to delete the job "{{ job.jobTitle }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">
+            Delete
+        </button>
+    </form>
+{% endblock %}
+

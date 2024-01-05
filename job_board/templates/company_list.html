@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Your Companies {% endblock %}
+
+{% block content %}
+    <h1>Your companies</h1>
+    <a href="{% url 'company-create'%}">Add company</a>
+    
+    {% if object_list %}
+    {% for company in object_list %}
+        {% if company.created_by == request.user %}
+        <div>
+            <h2>{{company.companyName}}</h2>
+            <p>{{company.companyIndustry}} <i>{{company.companyLocation}} </i></p>
+            <a href="{% url 'company-update' company.pk %}"> Edit </a>
+            <a href="{% url 'company-delete' company.pk %}"> Remove </a>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% else %}
+        <p>No company exist</p>
+    {% endif %}
+{% endblock %}
